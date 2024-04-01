@@ -3,6 +3,9 @@ import { styled } from 'styled-components';
 export const Container = styled.div`
   height: 500px;
   width: 500px;
+  border-radius: 10px;
+  border: 5px solid #dcdde1;
+  padding: 5px;
 `;
 
 export const LocationMarker = styled.div`

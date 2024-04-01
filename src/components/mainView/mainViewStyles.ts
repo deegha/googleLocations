@@ -7,6 +7,7 @@ export const Container = styled.div`
   padding: 10px;
   align-items: center;
   gap: 40px;
+  margin-top: 50px;
 `;
 
 export const PageHeading = styled.h1`
