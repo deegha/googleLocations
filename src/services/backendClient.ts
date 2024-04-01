@@ -1,22 +1,22 @@
-import { TMethod, TOptions } from "./d";
+import { TMethod, TOptions } from './d';
 
 export const handleCall = async (
   endpoint: string,
   method: TMethod,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  bodyObejct?: Record<string, any>,
+  bodyObejct?: Record<string, any>
 ) => {
   let options: TOptions = {
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json'
     },
-    method,
+    method
   };
 
   if (bodyObejct) {
     options = {
       ...options,
-      body: JSON.stringify(bodyObejct),
+      body: JSON.stringify(bodyObejct)
     };
   }
   const response = await fetch(endpoint, options);

@@ -1,23 +1,15 @@
-import GoogleMapReact from "google-map-react";
+import GoogleMapReact from 'google-map-react';
 import {
   Container,
   LocationPinContainer,
   LocationMarker,
-  LocationText,
-} from "./locatioinMapStyles";
+  LocationText
+} from './locatioinMapStyles';
 
-import { useAppSelector } from "../../hooks/reduxHooks";
+import { useAppSelector } from '../../hooks/reduxHooks';
 
 const apiKey = process.env.REACT_APP_PLACES_G;
-const LocationPin = ({
-  text,
-  icon,
-}: {
-  icon: string;
-  text: string;
-  lat: number;
-  lng: number;
-}) => (
+const LocationPin = ({ text, icon }: { icon: string; text: string; lat: number; lng: number }) => (
   <LocationPinContainer>
     <LocationMarker>
       <img src={icon} alt={text} />
@@ -40,8 +32,7 @@ export default function LocationMap() {
         bootstrapURLKeys={{ key: apiKey as string }}
         yesIWantToUseGoogleMapApiInternals
         defaultCenter={selectedLocation.geometry.location}
-        defaultZoom={11}
-      >
+        defaultZoom={11}>
         <LocationPin
           lat={selectedLocation.geometry.location.lat}
           lng={selectedLocation.geometry.location.lng}
