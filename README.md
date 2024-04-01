@@ -1,46 +1,40 @@
-# Getting Started with Create React App
+## Location search app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app will let you input a location name and will give you suggestion. Based on what you select if will show that in a map.
+This app calls the google places api directly form the backend. But in a real world app this should be done by our own backend, But I decided to call the api directly since we do not have a backend for this app. I didnt use any 3rd party package either as this way enables me use redux.
 
-## Available Scripts
+Read the improvement section for more info about this.
 
-In the project directory, you can run:
+### what we have used
 
-### `npm start`
+- Create react app
+- Google places api
+- google-map-react
+- Redux
+- Redux tool kit
+- Redux Thunk
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Setting up
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- along with this project you should get a .env file. Make sure to place it in the root of the project. (In the same level as this REASme file)
+- This app is calling the google places api from the client side, so you will get an error related to CORS. To stop this make sure to add CORS enabler addon for your browser
+  Firefox : https://addons.mozilla.org/en-US/firefox/addon/access-control-allow-origin/
+  Chrom: https://chromewebstore.google.com/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?pli=1
+- Install the dependencies
+  `npm install `
+- Start the app with
+  `npm start `
 
-### `npm test`
+### Folder structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+I followed a simple yet scallable folder structure. I treat everything as a component. That was this app is modularized and most of the component become reusable.
 
-### `npm run build`
+I moved the redux bit into a seperate space so that we know the logic lives in the slices folder.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+I have defined backend api call based on the domain. For our single use case I created a service called googleClient. So that everyting realted to google will live inside that. and If you introduce a new domain area, lets say authentication. Then we can create a seperate client for all the authenticaton related things.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Based on the initial plan all the service calls should go through a common handler called handleCall. This will reduce the repetitive things like method, option and body. But unfortunatly with the CORS issue we cannot use that. So I ended up using a simple fetch call.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Improvements
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+If I have to improve this code the first this I would do either move this to a next js project so that I could do the google api call in a server component. or I would create my own backend to securly call the google endpoint.

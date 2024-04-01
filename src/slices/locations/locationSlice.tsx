@@ -28,7 +28,6 @@ export const locationSlice = createSlice({
       .addCase(
         fetchLocations.fulfilled,
         (state, action: PayloadAction<IApidata>) => {
-          console.log(action);
           state.loading = false;
           state.avilableLocations = action.payload.results;
         },
