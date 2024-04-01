@@ -20,7 +20,7 @@ export interface IApidata {
 
 export interface ILocationState {
   locationText: string;
-  avilableLocations: Array<TLocation>;
+  availableLocations: Array<TLocation>;
   loading: boolean;
   selectedLocation: TLocation;
 }

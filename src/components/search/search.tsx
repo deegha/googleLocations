@@ -12,7 +12,7 @@ import { TLocation } from "../../slices/locations/d";
 
 export default function Search() {
   const dispatch = useAppDispatch();
-  const { locationText, selectedLocation, avilableLocations } = useAppSelector(
+  const { locationText, selectedLocation, availableLocations } = useAppSelector(
     (state) => state.location,
   );
 
@@ -55,7 +55,7 @@ export default function Search() {
         }}
         disablePortal
         id="combo-box-demo"
-        options={avilableLocations}
+        options={availableLocations}
         sx={{ width: 300 }}
         renderInput={(params) => (
           <TextField

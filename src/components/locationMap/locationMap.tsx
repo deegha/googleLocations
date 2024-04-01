@@ -40,7 +40,7 @@ export default function LocationMap() {
         bootstrapURLKeys={{ key: apiKey as string }}
         yesIWantToUseGoogleMapApiInternals
         defaultCenter={selectedLocation.geometry.location}
-        defaultZoom={9}
+        defaultZoom={11}
       >
         <LocationPin
           lat={selectedLocation.geometry.location.lat}

@@ -4,7 +4,7 @@ import { TLocation, IApidata, ILocationState } from "./d";
 
 const initialState: ILocationState = {
   selectedLocation: {} as TLocation,
-  avilableLocations: [],
+  availableLocations: [],
   locationText: "",
   loading: false,
 };
@@ -29,7 +29,7 @@ export const locationSlice = createSlice({
         fetchLocations.fulfilled,
         (state, action: PayloadAction<IApidata>) => {
           state.loading = false;
-          state.avilableLocations = action.payload.results;
+          state.availableLocations = action.payload.results;
         },
       )
       .addCase(fetchLocations.rejected, (state) => {
