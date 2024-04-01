@@ -1,6 +1,6 @@
-import React from "react";
-import { Container, PageHeading } from "./mainViewStyles";
-import { Search, LocationMap } from "../";
+import React from 'react';
+import { Container, PageHeading } from './mainViewStyles';
+import { Search, LocationMap } from '../';
 
 export default function MainView() {
   return (

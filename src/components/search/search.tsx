@@ -1,23 +1,20 @@
-import React, { useMemo, useEffect } from "react";
-import debounce from "lodash.debounce";
-import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
-import {
-  setLocationText,
-  setSelectedLocation,
-} from "../../slices/locations/locationSlice";
-import { fetchLocations } from "../../slices/locations/locationsThunks";
-import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
-import { TLocation } from "../../slices/locations/d";
+import React, { useMemo, useEffect } from 'react';
+import debounce from 'lodash.debounce';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
+import { setLocationText, setSelectedLocation } from '../../slices/locations/locationSlice';
+import { fetchLocations } from '../../slices/locations/locationsThunks';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
+import { TLocation } from '../../slices/locations/d';
 
 export default function Search() {
   const dispatch = useAppDispatch();
   const { locationText, selectedLocation, availableLocations } = useAppSelector(
-    (state) => state.location,
+    (state) => state.location
   );
 
   useEffect(() => {
-    if (locationText !== "") {
+    if (locationText !== '') {
       dispatch(fetchLocations({ locationString: locationText }));
     }
   }, [locationText, dispatch]);
@@ -27,8 +24,8 @@ export default function Search() {
     const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       dispatch(
         setLocationText({
-          text: e.target.value,
-        }),
+          text: e.target.value
+        })
       );
     };
     return debounce(handleTextChange, 300);
@@ -45,7 +42,7 @@ export default function Search() {
     <div>
       <Autocomplete
         getOptionLabel={(option) => {
-          return Object.keys(option).length === 0 ? "" : option.name;
+          return Object.keys(option).length === 0 ? '' : option.name;
         }}
         getOptionKey={(option) => option.place_id}
         value={selectedLocation}
@@ -58,11 +55,7 @@ export default function Search() {
         options={availableLocations}
         sx={{ width: 300 }}
         renderInput={(params) => (
-          <TextField
-            onChange={debouncedResults}
-            {...params}
-            label="Locations"
-          />
+          <TextField onChange={debouncedResults} {...params} label="Locations" />
         )}
       />
     </div>
