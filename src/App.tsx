@@ -13,6 +13,7 @@ const Container = styled.div`
 `;
 
 function App() {
+  console.log('Hellow world');
   return (
     <Container>
       <MainView />
