@@ -1,7 +1,8 @@
 export type TLocation = {
   icon: string;
-  label: string;
   formatted_address: string;
+  name: string;
+  place_id: string;
   geometry: {
     location: {
       lng: number;

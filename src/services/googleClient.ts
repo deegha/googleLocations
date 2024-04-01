@@ -1,7 +1,8 @@
-const apiKey = "AIzaSyCuLkwbbatjnimjiMQh5puLNv610srYaf0";
+const apiKey = process.env.REACT_APP_PLACES_G;
+const baseUrl = process.env.REACT_APP_GOOGLE_URL;
 
 export function getLocations(locationString: string) {
   return fetch(
-    `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${encodeURIComponent(locationString)}&key=${apiKey}`,
+    `${baseUrl}query=${encodeURIComponent(locationString)}&key=${apiKey}`,
   );
 }

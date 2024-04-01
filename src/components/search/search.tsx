@@ -17,7 +17,9 @@ export default function Search() {
   );
 
   useEffect(() => {
-    dispatch(fetchLocations({ locationString: locationText }));
+    if (locationText !== "") {
+      dispatch(fetchLocations({ locationString: locationText }));
+    }
   }, [locationText, dispatch]);
 
   //debouncing search result so that we do not add stress to the server and we do not re render on each key strok
@@ -43,11 +45,12 @@ export default function Search() {
     <div>
       <Autocomplete
         getOptionLabel={(option) => {
-          return Object.keys(option).length === 0 ? "" : option.label;
+          return Object.keys(option).length === 0 ? "" : option.name;
         }}
+        getOptionKey={(option) => option.place_id}
         value={selectedLocation}
         onChange={(e, newValue) => {
-          console.log(e);
+          if (!newValue) return;
           dispatch(setSelectedLocation(newValue as TLocation));
         }}
         disablePortal

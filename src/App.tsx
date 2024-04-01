@@ -4,15 +4,20 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
+import styles, { styled } from "styled-components";
+import { MainView } from "./components";
 
-import { Search } from "./components";
+const Container = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
 
 function App() {
   return (
-    <div className="App">
-      dafdsa
-      <Search />
-    </div>
+    <Container>
+      <MainView />
+    </Container>
   );
 }
 
